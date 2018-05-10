@@ -39,4 +39,8 @@ COPY zookeeper /etc/confluent/docker/zookeeper/
 
 COPY supervisor-conf.d/* /etc/supervisor/conf.d/
 
+COPY healthcheck.sh /
+
+HEALTHCHECK --interval=30s --timeout=3s CMD /healthcheck.sh
+
 CMD ["supervisord", "-n"]
